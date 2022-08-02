@@ -1,26 +1,24 @@
 package com.example.bindingdemo1
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import com.example.bindingdemo1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var dataBinding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val button = findViewById<Button>(R.id.submit_button)
-        button.setOnClickListener {
+        dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        dataBinding.submitButton.setOnClickListener {
             displayGreeting()
         }
     }
 
     private fun displayGreeting() {
-        val messageView = findViewById<TextView>(R.id.greeting_text_view)
-        val nameText = findViewById<EditText>(R.id.name_edit_text)
-
-        val message = "Hello! "+ nameText.text
-        messageView.text = message
+        dataBinding.apply {
+            val message = "Hello! " + dataBinding.nameEditText.text
+            dataBinding.greetingTextView.text = message
+        }
     }
 }

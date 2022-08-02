@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun displayGreeting() {
         dataBinding.apply {
-            val message = "Hello! " + dataBinding.nameEditText.text
+            val message = "Hello!" + dataBinding.nameEditText.text
             dataBinding.greetingTextView.text = message
         }
     }

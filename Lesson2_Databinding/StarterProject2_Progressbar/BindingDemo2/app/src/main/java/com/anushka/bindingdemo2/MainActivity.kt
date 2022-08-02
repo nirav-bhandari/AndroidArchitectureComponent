@@ -19,12 +19,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startOrStopProgressBar() {
-        if (binding.progressBar.visibility == View.GONE) {
-            binding.progressBar.visibility = View.VISIBLE
-            binding.controlButton.text = "Stop"
-        } else {
-            binding.progressBar.visibility = View.GONE
-            binding.controlButton.text = "Start"
+
+        binding.apply {
+            if (progressBar.visibility == View.GONE) {
+                progressBar.visibility = View.VISIBLE
+                controlButton.text = "Stop"
+            } else {
+                progressBar.visibility = View.GONE
+                controlButton.text = "Start"
+            }
         }
     }
 }
